@@ -1,0 +1,24 @@
+{
+  "themes": [
+    {
+      "id": "theme-white",
+      "name": "White",
+      "type": "light"
+    },
+    {
+      "id": "theme-night",
+      "name": "Night",
+      "type": "dark"
+    },
+    {
+      "id": "theme-classic-light",
+      "name": "Classic Light",
+      "type": "light"
+    },
+    {
+      "id": "theme-dark",
+      "name": "Dark",
+      "type": "dark"
+    }
+  ]
+}
