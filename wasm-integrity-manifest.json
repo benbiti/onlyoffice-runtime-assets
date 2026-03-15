@@ -1,6 +1,6 @@
 {
   "version": "v1",
-  "generatedAt": "2026-03-15T13:26:40.765Z",
+  "generatedAt": "2026-03-15T14:25:55.935Z",
   "files": {
     "vendor/onlyoffice/document_editor_service_worker.js": "9387959bfbd63bf0f3e807752aac36ae482cac6121197558e374a4f952176d53",
     "vendor/onlyoffice/plugins.json": "2f504d3fac15950e33b12208d139462beeb5aeb1265461f5c5397e66e24ee295",
@@ -465,6 +465,7 @@
     "vendor/onlyoffice/web-apps/apps/visioeditor/mobile/dist/js/935.js": "989fdb42c30964e86c5369e8f822a4a149364586c8701afd32ea61c8e276a593",
     "vendor/onlyoffice/web-apps/apps/visioeditor/mobile/dist/js/app.js": "9bdf0ae71f2c66ead8d54e4474481e65921d0bd5946259dfd71cc44e09e8dca9",
     "vendor/onlyoffice/web-apps/apps/visioeditor/mobile/locale/en.json": "459ff987a0f6fe656a69a31b7a2a65c5687e1cd057b9a8acccf4229dfbb860d5",
+    "vendor/onlyoffice/web-apps/overrides/runtime-branding.js": "4b229595cf8e76afaff6beda8f07b7a2ea54482cd128d77f35027309ec8a64af",
     "vendor/onlyoffice/web-apps/vendor/es6-promise/es6-promise.auto.min.js": "5f1addaf2e9f5922aed63d802f2b8afe01c543ed81a7be99ad1e9fdd05c8e3b6",
     "vendor/onlyoffice/web-apps/vendor/fetch/fetch.umd.js": "9a0c4301b6e804a7a808eb69694ed08567605811ae9bef1d3f19c88e20bdec92",
     "vendor/onlyoffice/web-apps/vendor/jquery/jquery.browser.min.js": "4752051d3d0c5a46e0bbabd7813e1113b4d24f844e2c36512ada5165e67f29ef",
