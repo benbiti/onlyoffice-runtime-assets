@@ -16,6 +16,12 @@ node scripts/sync-onlyoffice-assets.mjs \
 node scripts/hash-onlyoffice-assets.mjs --asset-root .
 ```
 
+The manifest intentionally tracks core runtime assets only:
+- executable/runtime bundles such as `js`, `css`, `wasm`, `json`, and runtime `.bin` data
+- root runtime files such as `document_editor_service_worker.js`, `plugins.json`, and `themes.json`
+
+It does not track bulky non-core content such as `help/` docs, screenshots, examples, or sourcemaps.
+
 ## 3) Prune untracked or stale files
 
 ```bash

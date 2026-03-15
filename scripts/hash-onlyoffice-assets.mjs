@@ -8,6 +8,8 @@ const MANIFEST_FILE_NAME = "wasm-integrity-manifest.json";
 const MANIFEST_PATH_PREFIX = "vendor/onlyoffice";
 const RUNTIME_DIRECTORIES = ["fonts", "sdkjs", "web-apps"];
 const RUNTIME_ROOT_FILES = ["document_editor_service_worker.js", "plugins.json", "themes.json"];
+const RUNTIME_EXCLUDED_PATH_SEGMENTS = ["/help/", "/examples/", "/docs/"];
+const RUNTIME_HASHED_EXTENSIONS = new Set([".js", ".css", ".wasm", ".json", ".bin"]);
 
 function printUsage() {
   console.log(
@@ -61,6 +63,25 @@ function toManifestRelativePath(assetRelativePath) {
   return `${MANIFEST_PATH_PREFIX}/${toPosixPath(assetRelativePath)}`;
 }
 
+function shouldHashRuntimeAsset(assetRelativePath) {
+  const normalizedPath = toPosixPath(assetRelativePath);
+
+  if (RUNTIME_ROOT_FILES.includes(normalizedPath)) {
+    return true;
+  }
+
+  if (normalizedPath.endsWith(`/${MANIFEST_FILE_NAME}`) || normalizedPath.endsWith(".map")) {
+    return false;
+  }
+
+  if (RUNTIME_EXCLUDED_PATH_SEGMENTS.some(segment => normalizedPath.includes(segment))) {
+    return false;
+  }
+
+  const extension = path.posix.extname(normalizedPath).toLowerCase();
+  return RUNTIME_HASHED_EXTENSIONS.has(extension);
+}
+
 async function isFile(absolutePath) {
   const stat = await fs.stat(absolutePath).catch(() => null);
   return Boolean(stat?.isFile());
@@ -88,7 +109,9 @@ async function collectDirectoryFiles(assetRoot, relativeDirectory) {
         continue;
       }
       const relativePath = path.relative(assetRoot, absolutePath);
-      results.push(toManifestRelativePath(relativePath));
+      if (shouldHashRuntimeAsset(relativePath)) {
+        results.push(toManifestRelativePath(relativePath));
+      }
     }
   }
 
@@ -100,7 +123,7 @@ async function collectRootFiles(assetRoot) {
   const results = [];
   for (const fileName of RUNTIME_ROOT_FILES) {
     const absolutePath = path.join(assetRoot, fileName);
-    if (await isFile(absolutePath)) {
+    if (await isFile(absolutePath) && shouldHashRuntimeAsset(fileName)) {
       results.push(toManifestRelativePath(fileName));
     }
   }
@@ -123,7 +146,7 @@ async function collectManifestFiles(assetRoot) {
     .sort((left, right) => left.localeCompare(right));
 
   if (uniqueSorted.length === 0) {
-    throw new Error("No runtime assets found to hash under fonts/, sdkjs/, web-apps/, or root runtime files.");
+    throw new Error("No core runtime assets found to hash under sdkjs/, web-apps/, or root runtime files.");
   }
 
   return uniqueSorted;
