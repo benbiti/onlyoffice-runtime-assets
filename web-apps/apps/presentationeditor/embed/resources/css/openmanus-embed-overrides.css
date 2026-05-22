@@ -1,0 +1,47 @@
+/* OpenManus embed viewer sizing override: keep the bottom toolbar compact. */
+:root {
+  --om-presentation-embed-toolbar-height: 40px;
+  --om-presentation-embed-control-size: 28px;
+}
+
+.viewer.bottom {
+  bottom: var(--om-presentation-embed-toolbar-height);
+}
+
+#box-preview.bottom {
+  padding-bottom: var(--om-presentation-embed-toolbar-height);
+}
+
+.toolbar.bottom {
+  height: var(--om-presentation-embed-toolbar-height);
+  font-size: 14px;
+}
+
+.toolbar.bottom .group.left {
+  padding-left: 14px;
+}
+
+.toolbar.bottom .group.right {
+  padding-right: 14px;
+}
+
+.toolbar.bottom .control-btn {
+  width: var(--om-presentation-embed-control-size);
+  height: var(--om-presentation-embed-control-size);
+  padding: 4px;
+}
+
+.toolbar.bottom .btn-icon {
+  width: var(--om-presentation-embed-control-size);
+  height: var(--om-presentation-embed-control-size);
+}
+
+.toolbar.bottom #page-number.input-xs {
+  height: var(--om-presentation-embed-control-size);
+  font-size: 14px;
+  line-height: var(--om-presentation-embed-control-size);
+}
+
+.toolbar.bottom #pages {
+  line-height: var(--om-presentation-embed-control-size);
+}

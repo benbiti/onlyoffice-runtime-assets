@@ -573,6 +573,9 @@
     "vendor/onlyoffice/web-apps/vendor/requirejs/require.js": "610f2ac718d69da72f114061a512ad3353f6413468fff7a827f5e902535134f1",
     "vendor/onlyoffice/web-apps/vendor/socketio/socket.io.min.js": "d4032e26d0c65e57a20dcad58ec0b9d0320c690b0692590883d2fb41d086c588",
     "vendor/onlyoffice/web-apps/vendor/underscore/underscore-min.js": "25f436e933246f279adc4967725a4d915e0fc7a6419d3b956a945bb5782dc6e5",
-    "vendor/onlyoffice/web-apps/vendor/xregexp/xregexp-all-min.js": "ad8b04fd8e59beabc616851cd6a820784884c68bb1ea75993e694b21344bd136"
+    "vendor/onlyoffice/web-apps/vendor/xregexp/xregexp-all-min.js": "ad8b04fd8e59beabc616851cd6a820784884c68bb1ea75993e694b21344bd136",
+    "vendor/onlyoffice/web-apps/apps/presentationeditor/embed/index.html": "062ef03ca9e92ebe854dbba020bb11cb87ad2cc3fca50345b3dd6c214b07fa9f",
+    "vendor/onlyoffice/web-apps/apps/presentationeditor/embed/index_loader.html": "feaf66cd0b61dd4602a749e1ce5c695329aa1d0c4c62d261f89e9fd30838abdc",
+    "vendor/onlyoffice/web-apps/apps/presentationeditor/embed/resources/css/openmanus-embed-overrides.css": "475bd3ff1bb10a706f37542a91e471ab0b4f70b772d88906454450840074c771"
   }
 }
