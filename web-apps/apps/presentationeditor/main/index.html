@@ -7,6 +7,9 @@
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <link rel="icon" href="resources/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../../../apps/presentationeditor/main/resources/css/app.css">
+    <link rel="stylesheet" href="../../../apps/presentationeditor/main/resources/css/openmanus-main-overrides.css?v=20260523-48">
+    <script defer src="../../../apps/presentationeditor/main/openmanus-main-layout-patch.js?v=20260523-48"></script>
 
     <!-- splash -->        
 
@@ -468,7 +471,5 @@ var checkLocalStorage=function(){try{var storage=window["localStorage"];return t
     <script>
         isIEBrowser === true ? require(['ie/app']) : require(['app']);
     </script>
-
-    <link rel="stylesheet" href="../../../apps/presentationeditor/main/resources/css/app.css" media="print" onload="this.media='all'">
 </body>
 </html>
