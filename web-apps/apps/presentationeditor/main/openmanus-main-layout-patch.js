@@ -7,7 +7,7 @@
 
   window.__omPresentationMainLayoutPatch = true;
 
-  var STATUSBAR_HEIGHT = 56;
+  var STATUSBAR_HEIGHT = 48;
   var scheduled = false;
   var lastAppliedSignature = '';
 

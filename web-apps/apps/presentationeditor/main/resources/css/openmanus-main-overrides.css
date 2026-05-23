@@ -1,8 +1,8 @@
 /* OpenManus main presentation viewer sizing override. */
 :root {
-  --statusbar-height: 56px;
-  --om-presentation-main-statusbar-height: 56px;
-  --om-presentation-main-statusbar-control-size: 48px;
+  --statusbar-height: 48px;
+  --om-presentation-main-statusbar-height: 48px;
+  --om-presentation-main-statusbar-control-size: 40px;
 }
 
 #viewport-vbox-layout > .layout-item.middle,
@@ -53,6 +53,7 @@
 
 #statusbar .status-label {
   line-height: var(--om-presentation-main-statusbar-control-size);
+  font-size: 15px; /* Slightly larger text as requested */
 }
 
 #statusbar .btn-group {
@@ -72,11 +73,26 @@
   vertical-align: middle;
 }
 
-#statusbar .btn-toolbar .toolbar__icon {
-  flex: 0 0 20px;
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
+#statusbar .btn-toolbar .toolbar__icon,
+#statusbar .btn.small .toolbar__icon {
+  transform: scale(1.4);
+  transform-origin: center center;
+  display: block;
+  margin: auto;
+}
+
+#statusbar .caret {
+  width: 8px ;
+  height:8px;
+}
+
+#id_vertical_scroll,
+#id_vertical_scroll_thmbnl {
+  margin-bottom: 8px !important;
+}
+
+#id_main_parent {
+  margin-bottom: 8px !important;
 }
 
 #statusbar .status-group .margin-top-small > .btn-group,
