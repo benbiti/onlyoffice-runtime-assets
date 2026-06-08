@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const MANIFEST_VERSION = "v1";
 const MANIFEST_FILE_NAME = "wasm-integrity-manifest.json";
-const MANIFEST_PATH_PREFIX = "vendor/onlyoffice";
+const MANIFEST_PATH_PREFIX = "vendor/office";
 const RUNTIME_DIRECTORIES = ["fonts", "sdkjs", "web-apps"];
 const RUNTIME_ROOT_FILES = ["document_editor_service_worker.js", "plugins.json", "themes.json"];
 const RUNTIME_EXCLUDED_PATH_SEGMENTS = ["/help/", "/examples/", "/docs/"];
@@ -14,11 +14,11 @@ const RUNTIME_HASHED_EXTENSIONS = new Set([".js", ".css", ".wasm", ".json", ".bi
 function printUsage() {
   console.log(
     [
-      "Usage: node scripts/hash-onlyoffice-assets.mjs [--asset-root <dir>]",
+      "Usage: node scripts/hash-office-assets.mjs [--asset-root <dir>]",
       "",
       "Examples:",
-      "  node scripts/hash-onlyoffice-assets.mjs",
-      "  node scripts/hash-onlyoffice-assets.mjs --asset-root /path/to/onlyoffice-runtime-assets",
+      "  node scripts/hash-office-assets.mjs",
+      "  node scripts/hash-office-assets.mjs --asset-root /path/to/office-runtime-assets",
       "",
       "Asset root defaults to current working directory.",
     ].join("\n"),
@@ -159,7 +159,7 @@ async function hashFile(assetRoot, manifestPath) {
   return crypto.createHash("sha256").update(content).digest("hex");
 }
 
-export async function hashOnlyOfficeAssets({ assetRootArg } = {}) {
+export async function hashOfficeAssets({ assetRootArg } = {}) {
   const assetRoot = resolveAssetRoot(assetRootArg);
   const exists = await isDirectory(assetRoot);
   if (!exists) {
@@ -194,7 +194,7 @@ async function main() {
     return;
   }
 
-  const result = await hashOnlyOfficeAssets({ assetRootArg: args.assetRoot });
+  const result = await hashOfficeAssets({ assetRootArg: args.assetRoot });
   console.log(`Wrote ${result.fileCount} runtime hashes to ${result.manifestAbsolutePath}`);
 }
 

@@ -1,15 +1,15 @@
-# ONLYOFFICE Runtime Assets
+# OFFICE Runtime Assets
 
-This repository owns ONLYOFFICE runtime assets and governance scripts.
+This repository owns OFFICE runtime assets and governance scripts.
 The main app repository consumes this repository as a git submodule.
 
 ## Quick commands
 
 ```bash
-node scripts/sync-onlyoffice-assets.mjs --source-root /path/to/upstream/vendor --asset-root .
-node scripts/hash-onlyoffice-assets.mjs --asset-root .
-node scripts/prune-onlyoffice-assets.mjs --asset-root . --dry-run
-node scripts/verify-onlyoffice-assets.mjs --asset-root . --en-only
+node scripts/sync-office-assets.mjs --source-root /path/to/upstream/vendor --asset-root .
+node scripts/hash-office-assets.mjs --asset-root .
+node scripts/prune-office-assets.mjs --asset-root . --dry-run
+node scripts/verify-office-assets.mjs --asset-root . --en-only
 ```
 
 ## Documentation

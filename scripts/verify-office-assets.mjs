@@ -11,7 +11,7 @@ const REQUIRED_FILES = [
   'themes.json',
   'wasm-integrity-manifest.json',
 ];
-const VENDOR_PREFIX = 'vendor/onlyoffice/';
+const VENDOR_PREFIX = 'vendor/office/';
 
 function normalizeLocale(value) {
   return value.trim().toLowerCase();
@@ -46,7 +46,7 @@ async function verifyRequiredFiles(root, errors) {
     if (await fileExists(absoluteFile)) {
       continue;
     }
-    errors.push(`Missing required ONLYOFFICE file: ${relativeFile}`);
+    errors.push(`Missing required OFFICE file: ${relativeFile}`);
   }
 }
 
@@ -200,13 +200,13 @@ async function verifyManifest(root, verifyManifestFileSet, errors, warnings) {
   return entries.length;
 }
 
-export async function validateOnlyOfficeAssets(assetRoot = process.cwd(), options = {}) {
+export async function validateOfficeAssets(assetRoot = process.cwd(), options = {}) {
   const root = path.resolve(assetRoot);
   const rootStat = await fs.stat(root).catch(() => null);
   if (!rootStat || !rootStat.isDirectory()) {
     return {
       ok: false,
-      errors: [`ONLYOFFICE asset root does not exist: ${root}`],
+      errors: [`OFFICE asset root does not exist: ${root}`],
       warnings: [],
       stats: {
         localeFilesScanned: 0,
@@ -319,7 +319,7 @@ function parseCliArguments(argv) {
 
 async function runCli() {
   const args = parseCliArguments(process.argv.slice(2));
-  const result = await validateOnlyOfficeAssets(args.assetRoot, {
+  const result = await validateOfficeAssets(args.assetRoot, {
     locales: args.locales,
     helpLocales: args.helpLocales,
     monacoLocales: args.monacoLocales,
@@ -352,7 +352,7 @@ async function runCli() {
 
   // eslint-disable-next-line no-console
   console.log(
-    `ONLYOFFICE asset verification passed: localeFiles=${result.stats.localeFilesScanned}, helpDirs=${result.stats.helpDirectoriesScanned}, monacoNls=${result.stats.monacoNlsFilesScanned}, manifestEntries=${result.stats.manifestEntries}`,
+    `OFFICE asset verification passed: localeFiles=${result.stats.localeFilesScanned}, helpDirs=${result.stats.helpDirectoriesScanned}, monacoNls=${result.stats.monacoNlsFilesScanned}, manifestEntries=${result.stats.manifestEntries}`,
   );
 }
 

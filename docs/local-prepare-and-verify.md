@@ -1,11 +1,11 @@
 # Local Prepare and Verify
 
-Use this flow when updating ONLYOFFICE runtime assets in this repository.
+Use this flow when updating OFFICE runtime assets in this repository.
 
 ## 1) Sync assets from upstream source
 
 ```bash
-node scripts/sync-onlyoffice-assets.mjs \
+node scripts/sync-office-assets.mjs \
   --source-root /path/to/upstream/vendor \
   --asset-root .
 ```
@@ -13,7 +13,7 @@ node scripts/sync-onlyoffice-assets.mjs \
 ## 2) Rebuild integrity manifest
 
 ```bash
-node scripts/hash-onlyoffice-assets.mjs --asset-root .
+node scripts/hash-office-assets.mjs --asset-root .
 ```
 
 The manifest intentionally tracks core runtime assets only:
@@ -25,14 +25,14 @@ It does not track bulky non-core content such as `help/` docs, screenshots, exam
 ## 3) Prune untracked or stale files
 
 ```bash
-node scripts/prune-onlyoffice-assets.mjs --asset-root . --dry-run
-node scripts/prune-onlyoffice-assets.mjs --asset-root .
+node scripts/prune-office-assets.mjs --asset-root . --dry-run
+node scripts/prune-office-assets.mjs --asset-root .
 ```
 
 ## 4) Verify runtime package constraints
 
 ```bash
-node scripts/verify-onlyoffice-assets.mjs --asset-root . --en-only
+node scripts/verify-office-assets.mjs --asset-root . --en-only
 ```
 
 ## 5) Commit and publish

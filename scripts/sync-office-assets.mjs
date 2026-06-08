@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const DEFAULT_SOURCE_ROOT = process.env.ONLYOFFICE_WASM_VENDOR_SOURCE_DIR?.trim() ?? "";
+const DEFAULT_SOURCE_ROOT = process.env.OFFICE_WASM_VENDOR_SOURCE_DIR?.trim() ?? "";
 const REQUIRED_SOURCE_DIRS = ["web-apps", "sdkjs", "fonts"];
 const DOCS_API_SCRIPT_RELATIVE_PATH = path.join("web-apps", "apps", "api", "documents", "api.js");
 const SERVICE_WORKER_SOURCE_RELATIVE_PATH = path.join(
@@ -36,13 +36,13 @@ const DEFAULT_ROOT_THEMES_CONFIG = {
 function printUsage() {
   console.log(
     [
-      "Usage: node scripts/sync-onlyoffice-assets.mjs [--asset-root <dir>] [--source-root <dir>|<dir>]",
+      "Usage: node scripts/sync-office-assets.mjs [--asset-root <dir>] [--source-root <dir>|<dir>]",
       "",
       "Examples:",
-      "  node scripts/sync-onlyoffice-assets.mjs --source-root /path/to/upstream/vendor",
-      "  node scripts/sync-onlyoffice-assets.mjs /path/to/upstream/vendor --asset-root .",
+      "  node scripts/sync-office-assets.mjs --source-root /path/to/upstream/vendor",
+      "  node scripts/sync-office-assets.mjs /path/to/upstream/vendor --asset-root .",
       "",
-      "Source root can also come from ONLYOFFICE_WASM_VENDOR_SOURCE_DIR.",
+      "Source root can also come from OFFICE_WASM_VENDOR_SOURCE_DIR.",
       "Asset root defaults to current working directory.",
     ].join("\n"),
   );
@@ -92,7 +92,7 @@ function resolveSourceRoot(cliSourceArg) {
   const sourceRoot = cliSource || DEFAULT_SOURCE_ROOT;
   if (!sourceRoot) {
     throw new Error(
-      "Missing source directory. Pass --source-root (or positional arg), or set ONLYOFFICE_WASM_VENDOR_SOURCE_DIR",
+      "Missing source directory. Pass --source-root (or positional arg), or set OFFICE_WASM_VENDOR_SOURCE_DIR",
     );
   }
   return path.resolve(sourceRoot);
@@ -201,7 +201,7 @@ async function ensureRootEditorConfigFiles(assetRoot) {
   }
 }
 
-export async function syncOnlyOfficeAssets({ sourceRootArg, assetRootArg } = {}) {
+export async function syncOfficeAssets({ sourceRootArg, assetRootArg } = {}) {
   const sourceRoot = resolveSourceRoot(sourceRootArg);
   const assetRoot = resolveAssetRoot(assetRootArg);
 
@@ -212,7 +212,7 @@ export async function syncOnlyOfficeAssets({ sourceRootArg, assetRootArg } = {})
   await stripDanglingSocketIoSourceMap(assetRoot);
   await ensureRootEditorConfigFiles(assetRoot);
 
-  console.log(`Synced ONLYOFFICE assets from ${sourceRoot} to ${assetRoot}`);
+  console.log(`Synced OFFICE assets from ${sourceRoot} to ${assetRoot}`);
 }
 
 async function main() {
@@ -222,7 +222,7 @@ async function main() {
     return;
   }
 
-  await syncOnlyOfficeAssets({ sourceRootArg: args.sourceRoot, assetRootArg: args.assetRoot });
+  await syncOfficeAssets({ sourceRootArg: args.sourceRoot, assetRootArg: args.assetRoot });
 }
 
 const isEntrypoint = process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1]);

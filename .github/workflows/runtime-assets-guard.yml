@@ -19,6 +19,6 @@ jobs:
 
       - name: run governance commands
         run: |
-          node scripts/prune-onlyoffice-assets.mjs --asset-root . --dry-run
-          node scripts/hash-onlyoffice-assets.mjs --asset-root .
-          node scripts/verify-onlyoffice-assets.mjs --asset-root . --en-only
+          node scripts/prune-office-assets.mjs --asset-root . --dry-run
+          node scripts/hash-office-assets.mjs --asset-root .
+          node scripts/verify-office-assets.mjs --asset-root . --en-only

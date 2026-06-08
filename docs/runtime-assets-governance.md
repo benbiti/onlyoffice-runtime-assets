@@ -6,14 +6,14 @@ This repository is the source of truth for runtime assets and governance
 artifacts.
 
 Owned in this repository:
-- `scripts/sync-onlyoffice-assets.mjs`
-- `scripts/hash-onlyoffice-assets.mjs`
-- `scripts/prune-onlyoffice-assets.mjs`
-- `scripts/verify-onlyoffice-assets.mjs`
+- `scripts/sync-office-assets.mjs`
+- `scripts/hash-office-assets.mjs`
+- `scripts/prune-office-assets.mjs`
+- `scripts/verify-office-assets.mjs`
 - runtime asset governance docs and workflow
 
 Owned in the main app repository:
-- ONLYOFFICE runtime integration code
+- OFFICE runtime integration code
 - stale lock cleanup command surface
 - index style docs that link back to this repository
 

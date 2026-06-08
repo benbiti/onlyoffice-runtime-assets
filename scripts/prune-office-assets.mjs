@@ -159,11 +159,11 @@ async function pruneMonacoNlsFiles(assetRoot, allowedMonacoLocales, result, dryR
   }
 }
 
-export async function pruneOnlyOfficeAssets(assetRoot = process.cwd(), options = {}) {
+export async function pruneOfficeAssets(assetRoot = process.cwd(), options = {}) {
   const root = path.resolve(assetRoot);
   const rootStat = await fs.stat(root).catch(() => null);
   if (!rootStat || !rootStat.isDirectory()) {
-    throw new Error(`ONLYOFFICE asset root does not exist: ${root}`);
+    throw new Error(`OFFICE asset root does not exist: ${root}`);
   }
 
   const allowedLocales = normalizeLocaleSet(options.locales, DEFAULT_ALLOWED_LOCALES);
@@ -253,7 +253,7 @@ function parseCliArguments(argv) {
 
 async function runCli() {
   const args = parseCliArguments(process.argv.slice(2));
-  const result = await pruneOnlyOfficeAssets(args.assetRoot, {
+  const result = await pruneOfficeAssets(args.assetRoot, {
     locales: args.locales,
     helpLocales: args.helpLocales,
     monacoLocales: args.monacoLocales,
@@ -267,7 +267,7 @@ async function runCli() {
 
   // eslint-disable-next-line no-console
   console.log(
-    `ONLYOFFICE prune completed (dryRun=${String(args.dryRun)}): removedFiles=${result.removedFiles}, removedDirectories=${result.removedDirectories}, removedBytes=${result.removedBytes}`,
+    `OFFICE prune completed (dryRun=${String(args.dryRun)}): removedFiles=${result.removedFiles}, removedDirectories=${result.removedDirectories}, removedBytes=${result.removedBytes}`,
   );
 }
 
